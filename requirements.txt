@@ -1,2 +1,4 @@
 ccxt
 pandas
+plotly
+python-binance

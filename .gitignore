@@ -1,3 +1,5 @@
 settings.py
 crypto/
 __pycache__
+dataset.txt
+historical*
