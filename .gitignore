@@ -3,3 +3,4 @@ crypto/
 __pycache__
 dataset.txt
 historical*
+data/
