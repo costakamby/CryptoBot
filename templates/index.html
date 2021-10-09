@@ -9,6 +9,40 @@
         <h1>Trades</h1>
         <div id="chart"></div>
         <div id="trades"></div>
+        
+        <form action = "/buy" method="post">
+            <input type="text" id="quantity" name = "quantity" />
+
+            <select>
+                {% for symbol in symbols %}
+                    <option>{{symbol['symbol']}}</option>
+                {%endfor%}
+            </select>
+            <input type="submit" name="buy" value="buy">
+        </form>
+        
+
+        <div id="balances">
+            <h2>Balances</h2>
+            <table>
+                {% for balance in balances%}
+                    {% if balance%}
+                        <tr>
+                            <td>
+                                {{balance['asset']}} 
+
+                            </td>
+                            <td>
+                                {{ balance['free']}}
+                            </td>
+                        </tr>
+                    {% endif %}
+                    
+                {% endfor%}
+
+            </table>
+            
+        </div>
         <h3>Settings</h3>
 
         <div id="settings">
@@ -30,6 +64,6 @@
             }
         </script> -->
 
-        <script src="chart.js"></script>
+        <script src="{{ url_for('static',filename ='chart.js')}}"></script>
     </body>
 </html>
