@@ -27,6 +27,7 @@
             <table>
                 {% for balance in balances%}
                     {% if balance%}
+                        {% if balance['free']|float() > 0 %}
                         <tr>
                             <td>
                                 {{balance['asset']}} 
@@ -36,6 +37,7 @@
                                 {{ balance['free']}}
                             </td>
                         </tr>
+                        {% endif %}
                     {% endif %}
                     
                 {% endfor%}

@@ -1,6 +1,8 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request,jsonify
 from binance.client import Client
 import settings,csv
+from decimal import *
+getcontext().prec=18
 
 app = Flask(__name__)
 
@@ -31,3 +33,19 @@ def sell():
 def settings():
     return 'settings'
 
+@app.route('/history')
+def history():
+    candles = client.get_historical_klines(symbol = "ETHBTC",interval = Client.KLINE_INTERVAL_1MINUTE,start_str="1 day ago UTC")
+    candlesticks = []
+
+    for candle in candles:
+        candlesticks.append({
+            "time":int(candle[0])/1000,
+            "open":candle[1],
+            "high":candle[2],
+            "low":candle[3],
+            "close":candle[4]
+        })
+
+
+    return jsonify(candlesticks)
