@@ -1,2 +1,2 @@
 # CryptoBot
-playing around  with a crypto bot
+playing around  with a crypto bot using binance api
